@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 
 export interface Perro {
   id: number;
@@ -16,7 +16,7 @@ export interface Perro {
 
 @Injectable({ providedIn: 'root' })
 export class PerrosService {
-  private perros: Perro[] = [
+  private perros = signal<Perro[]>([
     {
       id: 1, nombre: 'Rocky', tipo: 'Perro', raza: 'Labrador', edad: '2 años',
       sexo: 'Macho', tamano: 'Grande', vacunada: true,
@@ -53,16 +53,23 @@ export class PerrosService {
       descripcion: 'Curiosa y regalona. Le gusta acurrucarse y seguirte por toda la casa.',
       foto: 'https://placedog.net/600/600?id=6', adoptado: false,
     },
-  ];
+  ]);
 
   todas(): Perro[] {
-    return [];
+    return this.perros();
   }
 
-  obtener(id: string): Perro | undefined {
-    return undefined;
+  obtener(id: String): Perro | undefined {
+    return this.perros().find(p => p.id === Number(id));
   }
 
   agregar(perro: Perro): void {
+    const idAlto = Math.max(...this.perros().map(p => p.id));
+    perro.id = idAlto +1
+    this.perros.update(listac => [...listac, perro]);
+  }
+
+  adoptar(id: String) {
+    this.perros.update(lista => lista.map(perro => perro.id == Number(id) ? { ...perro, adoptado: true} : perro));
   }
 }

@@ -1,8 +1,42 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
     <ion-title>Detalle</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
+  @if (perro()) {
+    <ion-img [src]="perro()!.foto" [alt]="perro()!.nombre"></ion-img>
+    <h1 class="ion-margin-top">{{ perro()!.nombre }}</h1>
+    <ion-chip [color]="perro()!.adoptado ? 'success' : 'primary'">
+      <ion-label>{{ perro()!.adoptado ? 'Adoptado' : 'Disponible' }}</ion-label>
+    </ion-chip>
+
+    <div class="ion-margin-top">
+      <p><strong>Tipo:</strong> {{ perro()?.tipo }}</p>
+      <p><strong>Raza:</strong> {{ perro()?.raza }}</p>
+      <p><strong>Edad:</strong> {{ perro()?.edad }}</p>
+      <p><strong>Sexo:</strong> {{ perro()?.sexo }}</p>
+      <p><strong>Tamaño:</strong> {{ perro()?.tamano }}</p>
+      <p><strong>Vacunada:</strong> {{ perro()?.vacunada ? 'si' : 'no' }}</p>
+    </div>
+
+    <h3 class="ion-margin-top">Sobre mi</h3>
+    <p>{{ perro()?.descripcion }}</p>
+    <div class="ion-margin-tops ion-padding-top">
+      @if (perro()?.adoptado) {
+        <ion-button expand="block" disabled="true" color="medium">Ya fue adoptado</ion-button>
+      } @else {
+        <ion-button expand="block" color="primary" (click)="adoptar()">Adoptar perrito</ion-button>
+      }
+    </div>
+  } @else {
+    <div class="ion-text-center ion-margin-top">
+      <h2>Perrito no encontrado</h2>
+      <p>La mascota que busca fue retirada o no existe</p>
+    </div>
+  }
 </ion-content>

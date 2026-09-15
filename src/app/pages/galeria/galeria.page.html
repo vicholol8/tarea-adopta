@@ -1,8 +1,41 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Galería</ion-title>
+    <ion-title>Adopta</ion-title>
+  </ion-toolbar>
+
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="filtro">
+      <ion-segment-button value="todos">
+        <ion-label>Todos</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="disponibles">
+        <ion-label>Disponibles</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="adoptados">
+        <ion-label>Adoptados</ion-label>
+      </ion-segment-button>
+    </ion-segment>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
+  <ion-grid>
+    <ion-row>
+      @for (p of perrosFil(); track p.id) {
+        <ion-col size="6">
+          <app-tarjeta-perro [perro]="p"></app-tarjeta-perro>
+        </ion-col>
+      } @empty {
+        <ion-col size="12" class="ion-text-center">
+          <p>No hay perritos para mostrar</p>
+        </ion-col>
+      }
+    </ion-row>
+  </ion-grid>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button routerLink="/nuevo">
+        <p>+</p>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
