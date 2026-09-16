@@ -1,0 +1,27 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/login" text="Volver"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div style="text-align: center; margin-bottom: 30px; margin-top: 20px;">
+    <h2>Crea tu cuenta</h2>
+  </div>
+
+  <ion-input
+    fill="solid" label="Correo electrónico" labelPlacement="stacked" type="email" [(ngModel)]="correo" class="ion-margin-bottom">
+  </ion-input>
+  <ion-input
+    fill="solid" label="Contraseña" labelPlacement="stacked" type="password" [(ngModel)]="clave" class="ion-margin-bottom">
+  </ion-input>
+
+  @if (error) {
+    <p style="color: red; text-align: center; font-weight: bold;"> {{ error }}</p>
+  }
+
+  <ion-button expand="block" (click)="registrar()" class="ion-margin-top">Registrarme</ion-button>
+</ion-content>

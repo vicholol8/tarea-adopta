@@ -72,4 +72,12 @@ export class PerrosService {
   adoptar(id: String) {
     this.perros.update(lista => lista.map(perro => perro.id == Number(id) ? { ...perro, adoptado: true} : perro));
   }
+
+  editar(perro: Perro) {
+    this.perros.update(lista => lista.map(p => p.id === perro.id ? perro : p));
+  }
+
+  eliminar(id: String) {
+    this.perros.update(lista => lista.filter(p => p.id !== Number(id)));
+  }
 }

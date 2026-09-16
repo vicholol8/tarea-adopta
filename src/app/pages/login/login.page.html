@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Iniciar Sesión</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div style="text-align: center; margin-bottom: 30px; margin-top: 20 px;">
+    <h2>Bienvenido a Adopta</h2>
+  </div>
+
+  <ion-input
+    fill="solid" label="Correo electrónico" labelPlacement="stacked" type="email" [(ngModel)]="correo" class="ion-margin-bottom">
+  </ion-input>
+  <ion-input
+    fill="solid" label="Contraseña" labelPlacement="stacked" type="password" [(ngModel)]="clave" class="ion-margin-bottom">
+  </ion-input>
+  @if (error) {
+    <p style="color: red; text-align: center; font-weight: bold;"> {{ error }}</p>
+  }
+
+  <ion-button expand="block" (click)="ingresar()" class="ion-margin-top">Entrar</ion-button>
+
+  <div style="text-align: center; margin-top: 20px;">
+    <p style="color: gray;">No tienes cuenta?</p>
+    <ion-button fill="clear" routerLink="/registro">Registrate aquí</ion-button>
+  </div>
+</ion-content>

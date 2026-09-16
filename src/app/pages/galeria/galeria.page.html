@@ -1,6 +1,13 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Adopta</ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="danger" (click)="cerrarSesion()">Salir</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <ion-toolbar>
+    <p style="text-align: center; margin: 5px; color: gray; font-size: 14 px;"> Usuario: <strong>{{ auth.usuarioActual() }}</strong></p>
   </ion-toolbar>
 
   <ion-toolbar>

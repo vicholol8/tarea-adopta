@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Editar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-input
+    fill="solid" label="Foto (url)" labelPlacement="stacked" [(ngModel)]="perroEditar.foto" class="ion-margin-bottom">
+  </ion-input>
+
+  <ion-input
+    fill="solid" label="Nombre" labelPlacement="stacked" [(ngModel)]="perroEditar.nombre" class="ion-margin-bottom">
+  </ion-input>
+
+  <div class="ion-margin-bottom ion-margin-top">
+    <ion-label color="medium" style="font-size: 12px; margin-left: 5px;">Tipo</ion-label>
+    <ion-segment [(ngModel)]="perroEditar.tipo" class="ion-margin-top">
+      <ion-segment-button value="Perro"><ion-label>Perro</ion-label></ion-segment-button>
+      <ion-segment-button value="Gato"><ion-label>Gato</ion-label></ion-segment-button>
+      <ion-segment-button value="Otro"><ion-label>Otro</ion-label></ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <ion-input
+    fill="solid" label="Raza" labelPlacement="stacked" [(ngModel)]="perroEditar.raza" class="ion-margin-bottom">
+  </ion-input>
+
+  <ion-input
+    fill="solid" label="Edad" labelPlacement="stacked" type="number" [(ngModel)]="perroEditar.edad" class="ion-margin-bottom">
+  </ion-input>
+
+  <div class="ion-margin-bottom ion-margin-top">
+    <ion-label color="medium" style="font-size: 12px; margin-left: 5px;">Sexo</ion-label>
+    <ion-segment [(ngModel)]="perroEditar.sexo" class="ion-margin-top">
+      <ion-segment-button value="Macho"><ion-label>Macho</ion-label></ion-segment-button>
+      <ion-segment-button value="Hembra"><ion-label>Hembra</ion-label></ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div class="ion-margin-bottom ion-margin-top">
+    <ion-label color="medium" style="font-size: 12px; margin-left: 5px;">Tamaño</ion-label>
+    <ion-segment [(ngModel)]="perroEditar.tamano" class="ion-margin-top">
+      <ion-segment-button value="Pequeño"><ion-label>Pequeño</ion-label></ion-segment-button>
+      <ion-segment-button value="Mediano"><ion-label>Mediano</ion-label></ion-segment-button>
+      <ion-segment-button value="Grande"><ion-label>Grande</ion-label></ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <ion-item class="ion-margin-bottom" lines="none">
+    <ion-label>Está vacunado/a?</ion-label>
+    <ion-toggle [(ngModel)] ="perroEditar.vacunado"></ion-toggle>
+  </ion-item>
+
+  <ion-textarea
+    fill="solid" label="Descripción" labelPlacement="stacked" [(ngModel)]="perroEditar.descripcion" class="ion-margin-bottom" autoGrow="true">
+  </ion-textarea>
+
+  <ion-button expand="block" (click)="guardarCambios()" class="ion-margin-top">Guardar perrito</ion-button>
+</ion-content>

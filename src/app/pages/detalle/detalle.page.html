@@ -32,6 +32,18 @@
       } @else {
         <ion-button expand="block" color="primary" (click)="adoptar()">Adoptar perrito</ion-button>
       }
+
+      <ion-button expand="block" color="tertiary" [routerLink]="['/editar', perro()?.id]" class="ion-margin-top">Editar datos</ion-button>
+
+      @if (confirmacion) {
+        <div class="ion-margin-top ion-padding" style="background: white; border-radius: 8px;">
+          <p style="color: red; text-align: center; font-weight: bold; margin-top: 0;">Estás seguro?</p>
+          <ion-button expand="block" color="danger" (click)="eliminar()">Sí, eliminar de forma definitiva</ion-button>
+          <ion-button expand="block" fill="clear" clear="medium" (click)="confirmacion = false">Cancelar</ion-button>
+        </div>
+      } @else {
+        <ion-button expand="block" color="danger" (click)="confirmacion = true" class="ion-margin-top">Eliminar perrito</ion-button>
+      }
     </div>
   } @else {
     <div class="ion-text-center ion-margin-top">
